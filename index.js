@@ -11,8 +11,8 @@ app.use(express.json());
 let model;
 
 // Load the model asynchronously when the server starts
-// We explicitly point to the GitHub-hosted model to bypass Render's Cloudfront DNS errors
-nsfwjs.load('https://raw.githubusercontent.com/infinitered/nsfwjs/master/example/nsfw_demo/public/model/', { size: 299 }).then((loadedModel) => {
+// Using the official unpkg CDN to reliably load the default, lightweight quantized model
+nsfwjs.load('https://unpkg.com/nsfwjs/example/nsfw_demo/public/quant_nsfw_mobilenet/').then((loadedModel) => {
     model = loadedModel;
     console.log('NSFWJS Model Loaded successfully.');
 }).catch((err) => {
